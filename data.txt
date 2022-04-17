@@ -1,1 +1,37 @@
 https://linuxize.com/post/how-to-install-gcc-on-ubuntu-20-04/
+class ByteArray
+{
+	char buffer[1024];
+	int cur_i = 0;
+public:
+	int size() { return cur_i; }
+	void append(const char* str) {
+		
+		int len = strlen(str);
+
+		if (str && len) {
+
+			memcpy(&buffer[cur_i], str, len);
+			cur_i += len;
+		};
+	}
+	
+	void append(char* str, int len) {
+		if (len < 0)
+			len = strlen(str);
+
+		if (str && len) {
+
+			memcpy(&buffer[cur_i], str, len);
+			cur_i += len;
+		};
+	}
+	const char* c_str() {
+		return &buffer[0];
+	}
+	char& operator[] (const int index)
+	{
+		return buffer[index];
+	}
+	
+};
